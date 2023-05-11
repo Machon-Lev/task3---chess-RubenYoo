@@ -8,9 +8,10 @@ constexpr auto ROWS = 8;
 constexpr auto COLUMNS = 8;
 
 class Board {
-	Piece* _board[ROWS][COLUMNS];
+	std::unique_ptr<Piece> _board[ROWS][COLUMNS];
 	Color _turn;
 	bool _chess;
 public:
 	Board();
+	int move_piece(std::string fromTo);
 };
