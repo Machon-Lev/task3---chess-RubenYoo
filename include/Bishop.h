@@ -3,9 +3,9 @@
 
 class Piece;
 
-class Rook : public Piece {
+class Bishop : public Piece {
 
 public:
-	Rook(Color color) : Piece(rook, color) {}
+	Bishop(Color color) : Piece(bishop, color) {}
 	int move(std::string fromTo, Board* board) override;
 };
