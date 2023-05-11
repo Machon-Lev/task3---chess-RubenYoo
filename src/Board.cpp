@@ -1,15 +1,18 @@
 #include "Board.h"
+#include "Piece.h"
+#include "Rook.h"
 
 Board::Board(std::string board)
 {
 	_turn = white;
 	_chess = false;
 
+
 	for (size_t i = 0; i < ROWS; i++)
 	{
 		for (size_t j = 0; j < COLUMNS; j++)
 		{
-			switch (board[i + j])
+			switch (board[i * 8 + j])
 			{
 				case 'R': _board[i][j] = std::make_unique<Rook>(white); break;
 				case 'r': _board[i][j] = std::make_unique<Rook>(black); break;
@@ -50,5 +53,5 @@ int Board::move_piece(std::string fromTo)
 	if (_board[toRow][toColumn]->get_color() == _turn)
 		return 13;
 	
-	return 0;
+	return _board[toRow][toColumn]->move(fromTo, this);
 }

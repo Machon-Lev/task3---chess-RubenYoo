@@ -1,12 +1,16 @@
 #pragma once
-#include <iostream>
+#include <memory>
+#include <string>
 #include <vector>
 #include "Piece.h"
-#include "Rook.h"
+#include "PieceName.h"
 #include "Color.h"
+
 
 constexpr auto ROWS = 8;
 constexpr auto COLUMNS = 8;
+
+class Piece;
 
 class Board {
 	std::unique_ptr<Piece> _board[ROWS][COLUMNS];
