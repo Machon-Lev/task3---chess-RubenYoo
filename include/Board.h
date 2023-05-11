@@ -9,7 +9,8 @@ constexpr auto COLUMNS = 8;
 
 class Board {
 	Piece* _board[ROWS][COLUMNS];
-	Color _turn = white;
-	bool _chess = false;
-
+	Color _turn;
+	bool _chess;
+public:
+	Board();
 };
