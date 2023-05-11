@@ -4,6 +4,7 @@
 #include "King.h"
 #include "Bishop.h"
 #include "Knight.h"
+#include "Queen.h"
 
 Board::Board(std::string board)
 {
@@ -25,8 +26,8 @@ Board::Board(std::string board)
 				case 'b': _board[i][j] = std::make_unique<Bishop>(black); break;
 				case 'K': _board[i][j] = std::make_unique<King>(white); break;
 				case 'k': _board[i][j] = std::make_unique<King>(black); break;
-				//case 'Q': _board[i][j] = std::make_unique<Queen>(white); break;
-				//case 'q': _board[i][j] = std::make_unique<Queen>(black); break;
+				case 'Q': _board[i][j] = std::make_unique<Queen>(white); break;
+				case 'q': _board[i][j] = std::make_unique<Queen>(black); break;
 				//case 'P': _board[i][j] = std::make_unique<Pawn>(white); break;
 				//case 'p': _board[i][j] = std::make_unique<Pawn>(black); break;
 				case '#': _board[i][j] = nullptr; break;
