@@ -3,6 +3,7 @@
 #include "Rook.h"
 #include "King.h"
 #include "Bishop.h"
+#include "Knight.h"
 
 Board::Board(std::string board)
 {
@@ -18,8 +19,8 @@ Board::Board(std::string board)
 			{
 				case 'R': _board[i][j] = std::make_unique<Rook>(white); break;
 				case 'r': _board[i][j] = std::make_unique<Rook>(black); break;
-				//case 'N': _board[i][j] = std::make_unique<Knight>(white); break;
-				//case 'n': _board[i][j] = std::make_unique<Knight>(black); break;
+				case 'N': _board[i][j] = std::make_unique<Knight>(white); break;
+				case 'n': _board[i][j] = std::make_unique<Knight>(black); break;
 				case 'B': _board[i][j] = std::make_unique<Bishop>(white); break;
 				case 'b': _board[i][j] = std::make_unique<Bishop>(black); break;
 				case 'K': _board[i][j] = std::make_unique<King>(white); break;
