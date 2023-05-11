@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include "Piece.h"
+#include "Rook.h"
 #include "Color.h"
 
 constexpr auto ROWS = 8;
@@ -12,6 +13,6 @@ class Board {
 	Color _turn;
 	bool _chess;
 public:
-	Board();
+	Board(std::string board);
 	int move_piece(std::string fromTo);
 };
