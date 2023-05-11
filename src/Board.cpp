@@ -60,7 +60,6 @@ int Board::move_piece(std::string fromTo)
 	{
 		change_turn();
 		_board[toRow][toColumn] = std::move(_board[fromRow][fromColumn]);
-		//_board[fromRow][fromColumn].reset(nullptr);
 	}
 		
 

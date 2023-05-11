@@ -18,13 +18,13 @@ int Rook::move(std::string fromTo, Board* board)
     if (fromRow != toRow) {
         for (int row = fromRow + rowStep; row != toRow; row += rowStep) {
             if (board->is_piece_exist(row, fromColumn))
-                return 21; // piece obstructing the path
+                return 21; 
         }
     }
     else {
         for (int col = fromColumn + colStep; col != toColumn; col += colStep) {
             if (board->is_piece_exist(fromRow, col))
-                return 21; // piece obstructing the path
+                return 21;
         }
     }
 
