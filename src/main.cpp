@@ -32,7 +32,6 @@ int main()
 		/**/ 
 		{ // put your code here instead that code
 			
-			
 			cout << "code response >> ";
 			codeResponse = engine.move_piece(res);
 			//cin >> codeResponse;

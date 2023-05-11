@@ -32,11 +32,12 @@ Board::Board(std::string board)
 		}
 	}
 
-
 }
 
 int Board::move_piece(std::string fromTo)
 {
+	int code = 0;
+
 	int fromRow = std::tolower(fromTo[0]) - 'a';
 	int fromColumn = fromTo[1] - '1';
 
@@ -50,8 +51,35 @@ int Board::move_piece(std::string fromTo)
 	if (_board[fromRow][fromColumn]->get_color() != _turn)
 		return 12;
 
-	if (_board[toRow][toColumn]->get_color() == _turn)
+	if (_board[toRow][toColumn] != nullptr && _board[toRow][toColumn]->get_color() == _turn)
 		return 13;
 	
-	return _board[toRow][toColumn]->move(fromTo, this);
+	code = _board[fromRow][fromColumn]->move(fromTo, this);
+
+	if (code == 41 || code == 42)
+	{
+		change_turn();
+		_board[toRow][toColumn] = std::move(_board[fromRow][fromColumn]);
+		//_board[fromRow][fromColumn].reset(nullptr);
+	}
+		
+
+	return code;
+}
+
+
+bool Board::is_piece_exist(size_t row, size_t column)
+{
+	if (_board[row][column] == nullptr)
+		return false;
+
+	return true;
+}
+
+void Board::change_turn()
+{
+	if (_turn == white)
+		_turn = black;
+	else
+		_turn = white;
 }
