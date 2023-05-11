@@ -11,4 +11,5 @@ protected:
 	Color _color;
 public:
 	Piece(PieceName name, Color color) : _name(name), _color(color) {}
+	Color get_color();
 };
