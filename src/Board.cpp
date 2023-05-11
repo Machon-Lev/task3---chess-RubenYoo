@@ -21,14 +21,18 @@ int Board::move_piece(std::string fromTo)
 	int fromRow = std::tolower(fromTo[0]) - 'a';
 	int fromColumn = fromTo[1] - '1';
 
-	int ToRow = std::tolower(fromTo[2]) - 'a';
-	int ToColumn = fromTo[3] - '1';
+	int toRow = std::tolower(fromTo[2]) - 'a';
+	int toColumn = fromTo[3] - '1';
 
 
 	if (_board[fromRow][fromColumn] == nullptr)
 		return 11;
 
+	if (_board[fromRow][fromColumn]->get_color() != _turn)
+		return 12;
+
+	if (_board[toRow][toColumn]->get_color() == _turn)
+		return 13;
 	
-	std::cout << fromRow << " " << fromColumn;
 	return 0;
 }
