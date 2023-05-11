@@ -21,4 +21,5 @@ public:
 	int move_piece(std::string fromTo);
 	bool is_piece_exist(size_t row, size_t column);
 	void change_turn();
+	bool check_chess(Color color);
 };
