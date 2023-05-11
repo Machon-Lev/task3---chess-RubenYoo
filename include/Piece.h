@@ -7,8 +7,8 @@
 class Piece {
 
 protected:
-	PieceName name;
+	PieceName _name;
 	Color _color;
 public:
-
+	Piece(PieceName name, Color color) : _name(name), _color(color) {}
 };
