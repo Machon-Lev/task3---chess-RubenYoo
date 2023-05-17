@@ -5,9 +5,9 @@
 
 int main()
 {
-//	string board = "RNBQKBNRPPPPPPPP################################pppppppprnbqkbnr"; 
+	string board = "RNBQKBNRPPPPPPPP################################pppppppprnbqkbnr"; 
 //	string board = "##########K###############################R#############r#r#####";
-	string board = "K##############B######n#########b#########R#######N#####r#r#####";
+//	string board = "K##############B######n#########b#########R#######N#####r#r#####";
 //	string board = "#################################R########R#############r#r#####";
 
 	Chess a(board);

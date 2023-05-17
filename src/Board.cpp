@@ -5,6 +5,7 @@
 #include "Bishop.h"
 #include "Knight.h"
 #include "Queen.h"
+#include "Pawn.h"
 
 Board::Board(std::string board)
 {
@@ -28,8 +29,8 @@ Board::Board(std::string board)
 				case 'k': _board[i][j] = std::make_unique<King>(black); break;
 				case 'Q': _board[i][j] = std::make_unique<Queen>(white); break;
 				case 'q': _board[i][j] = std::make_unique<Queen>(black); break;
-				//case 'P': _board[i][j] = std::make_unique<Pawn>(white); break;
-				//case 'p': _board[i][j] = std::make_unique<Pawn>(black); break;
+				case 'P': _board[i][j] = std::make_unique<Pawn>(white); break;
+				case 'p': _board[i][j] = std::make_unique<Pawn>(black); break;
 				case '#': _board[i][j] = nullptr; break;
 				default: break;
 			}
@@ -74,7 +75,10 @@ int Board::move_piece(std::string fromTo)
 		else {
 			change_turn();
 			if (check_chess(_turn))
+			{
 				code = 41;
+				_chess = true;
+			}
 		}
 	}	
 
@@ -144,4 +148,9 @@ bool Board::check_chess(Color color)
 	}
 
 	return false;
+}
+
+Color Board::get_turn()
+{
+	return _turn;
 }
