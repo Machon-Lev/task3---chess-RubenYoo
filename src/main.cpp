@@ -1,12 +1,18 @@
 // Chess 
 #include "Chess.h"
+#include "Board.h"
+
 
 int main()
 {
 	string board = "RNBQKBNRPPPPPPPP################################pppppppprnbqkbnr"; 
 //	string board = "##########K###############################R#############r#r#####";
+//	string board = "K##############B######n#########b#########R#######N#####r#r#####";
+//	string board = "#################################R########R#############r#r#####";
+
 	Chess a(board);
 	int codeResponse = 0;
+	Board engine(board);
 	string res = a.getInput();
 	while (res != "exit")
 	{
@@ -23,11 +29,13 @@ int main()
 		41 - the last movement was legal and cause check 
 		42 - the last movement was legal, next turn 
 		*/
-
+		
 		/**/ 
 		{ // put your code here instead that code
+			
 			cout << "code response >> ";
-			cin >> codeResponse;
+			codeResponse = engine.move_piece(res);
+			//cin >> codeResponse;
 		}
 		/**/
 
