@@ -3,6 +3,8 @@
 
 int Pawn::move(std::string fromTo, Board* board)
 {
+    // collecting positions
+
     int fromRow = std::tolower(fromTo[0]) - 'a';
     int fromColumn = fromTo[1] - '1';
 
@@ -67,6 +69,9 @@ int Pawn::move(std::string fromTo, Board* board)
             return 42;
         }
     }
+
+
+    // it is not a valid move
 
     return 21;
 }

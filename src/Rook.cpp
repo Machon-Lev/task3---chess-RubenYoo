@@ -3,15 +3,21 @@
 
 int Rook::move(std::string fromTo, Board* board)
 {
+    // collecting positions
+
 	int fromRow = std::tolower(fromTo[0]) - 'a';
 	int fromColumn = fromTo[1] - '1';
 
 	int toRow = std::tolower(fromTo[2]) - 'a';
 	int toColumn = fromTo[3] - '1';
 
+    // cheking if it's a valid move
+
 	if (fromRow != toRow && fromColumn != toColumn)
 		return 21;
     
+    // checking if a piece is blocking the move
+
     int rowStep = (toRow - fromRow) > 0 ? 1 : -1;
     int colStep = (toColumn - fromColumn) > 0 ? 1 : -1;
 
@@ -27,6 +33,8 @@ int Rook::move(std::string fromTo, Board* board)
                 return 21;
         }
     }
+
+    // is is a valid move
 
 	return 42;
 }

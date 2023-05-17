@@ -7,12 +7,13 @@
 #include "Queen.h"
 #include "Pawn.h"
 
+// constructor
 Board::Board(std::string board)
 {
 	_turn = white;
 	_chess = false;
 
-
+	// init the board from the board string
 	for (size_t i = 0; i < ROWS; i++)
 	{
 		for (size_t j = 0; j < COLUMNS; j++)
@@ -39,9 +40,17 @@ Board::Board(std::string board)
 
 }
 
+// get the current player turn
+Color Board::get_turn()
+{
+	return _turn;
+}
+
 int Board::move_piece(std::string fromTo)
 {
 	int code = 0;
+
+	// collecting positions
 
 	int fromRow = std::tolower(fromTo[0]) - 'a';
 	int fromColumn = fromTo[1] - '1';
@@ -49,23 +58,28 @@ int Board::move_piece(std::string fromTo)
 	int toRow = std::tolower(fromTo[2]) - 'a';
 	int toColumn = fromTo[3] - '1';
 
-
+	// checking if piece exist at source
 	if (_board[fromRow][fromColumn] == nullptr)
 		return 11;
 
+	// checking if piece is from the right player
 	if (_board[fromRow][fromColumn]->get_color() != _turn)
 		return 12;
 
+	// checking if the destination position do not contains a piece from the current player
 	if (_board[toRow][toColumn] != nullptr && _board[toRow][toColumn]->get_color() == _turn)
 		return 13;
 	
+	// get the code move from the piece
 	code = _board[fromRow][fromColumn]->move(fromTo, this);
 
+	// if it is a valid move
 	if (code == 42)
 	{
 		std::unique_ptr<Piece> temp = std::move(_board[toRow][toColumn]);
 		_board[toRow][toColumn] = std::move(_board[fromRow][fromColumn]);
 
+		// check for chess
 		if (check_chess(_turn))
 		{
 			code = 31;
@@ -85,7 +99,7 @@ int Board::move_piece(std::string fromTo)
 	return code;
 }
 
-
+// check if the piece exist
 bool Board::is_piece_exist(size_t row, size_t column)
 {
 	if (_board[row][column] == nullptr)
@@ -94,6 +108,7 @@ bool Board::is_piece_exist(size_t row, size_t column)
 	return true;
 }
 
+// change player turn
 void Board::change_turn()
 {
 	if (_turn == white)
@@ -102,6 +117,7 @@ void Board::change_turn()
 		_turn = white;
 }
 
+// check for chess
 bool Board::check_chess(Color color)
 {
 	// searching the king
@@ -150,7 +166,3 @@ bool Board::check_chess(Color color)
 	return false;
 }
 
-Color Board::get_turn()
-{
-	return _turn;
-}
